@@ -1,0 +1,17 @@
+d::0:application/unknown
+d:atlas:0:application/unknown
+t:atlas/pack.atlas:1902:application/unknown
+i:atlas/pack.png:75594:image/png
+d:font:0:application/unknown
+t:font/devrays.fnt:12498:application/unknown
+i:font/devrays.png:100678:image/png
+d:shaders:0:application/unknown
+b:shaders/blur.frag:1076:application/unknown
+t:shaders/blur.glsl:2198:application/unknown
+b:shaders/blur.vert:309:application/unknown
+t:com/badlogic/gdx/graphics/g3d/shaders/default.fragment.glsl:5043:application/unknown
+t:com/badlogic/gdx/graphics/g3d/shaders/default.vertex.glsl:8738:application/unknown
+t:com/badlogic/gdx/graphics/g3d/shaders/depth.fragment.glsl:549:application/unknown
+t:com/badlogic/gdx/graphics/g3d/shaders/depth.vertex.glsl:2687:application/unknown
+t:com/badlogic/gdx/utils/arial-15.fnt:21743:application/unknown
+i:com/badlogic/gdx/utils/arial-15.png:21814:image/png
