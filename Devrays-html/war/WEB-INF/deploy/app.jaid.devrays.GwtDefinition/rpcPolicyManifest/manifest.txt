@@ -1,0 +1,2 @@
+# Module app.jaid.devrays.GwtDefinition
+# RPC service class, partial path of RPC policy file

@@ -1,0 +1,67 @@
+{
+com.badlogic.gdx.graphics.g2d.BitmapFont: { 
+small: { file: small.fnt },
+big: { file: big.fnt },
+norm16: { file: devrnorm16.fnt },
+norm32: { file: devrnorm32.fnt },
+mono16: { file: devrmono16.fnt },
+mono32: { file: devrmono32.fnt }
+},
+com.badlogic.gdx.graphics.Color: {
+	green: { a: 1, b: 0, g: 1, r: 0 },
+	white: { a: 1, b: 1, g: 1, r: 1 },
+	gray: { a: 1, b: 0.5, g: 0.5, r: 0.5 },
+	red: { a: 1, b: 0, g: 0, r: 1 },
+	black: { a: 1, b: 0, g: 0, r: 0 }
+},
+com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
+	dialogDim: { name: white, color: { r: 0, g: 0, b: 0, a: 0.45 } }
+},
+com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
+	default: { down: button_pressed, up: button, over: button_hover },
+	toggle: { down: button_pressed, checked: button_hover, up: button }
+},
+com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
+	default: { over: button_hover, down: button_pressed, up: button, font: small, fontColor: white, downFontColor: gray, disabledFontColor: gray },
+	toggle: { down: checkbutton_pressed, up: checkbutton, checked: checkbutton_checked, over: checkbutton_hover, font: small, fontColor: white, downFontColor: gray },
+},
+com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
+	default: { down: button_pressed, up: button, checked: button_hover},
+	close: { down: close_pressed, up: close, over: close_hover },
+	increment: { up: increment, down: increment_pressed, over: increment_hover },
+	decrement: { up: decrement, down: decrement_pressed, over: decrement_hover }
+},
+com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
+	default: { titleFont: small, background: background, titleFontColor: white },
+	card: { titleFont: small, background: card, titleFontColor: white }
+},
+com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+	default: { font: norm16, fontColor: white },
+	big: { font: big, fontColor: white },
+	headline: { font: norm16, fontColor: white, background: headline },
+	toggled: { background: togglelabel_toggled, font: norm16, fontColor: white },
+	untoggled: { background: togglelabel, font: norm16, fontColor: white },
+	mono: { font: mono16, fontColor: white}
+},
+com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
+	default: { selection: textselection, background: textfield, font: small, fontColor: white, cursor: white }
+},
+com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle: {
+	default: { vScroll: scrollbar_v, vScrollKnob: scrollknob,
+		   hScroll: scrollbar_h, hScrollKnob: scrollknob,
+ 		   background: nothing },
+	dropdown: { vScroll: scrollbar_v, vScrollKnob: scrollknob,
+		   hScroll: scrollbar_h, hScrollKnob: scrollknob,
+ 		   background: dropdown_selectbox }
+},
+com.badlogic.gdx.scenes.scene2d.ui.SelectBox$SelectBoxStyle: {
+	default: {
+		font: small, fontColor: white, background: dropdown,
+		scrollStyle: dropdown,
+		listStyle: { font: small, selection: dropdown_selection }
+	}
+},
+com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle: {
+	default: { fontColorUnselected: white, selection: selection, fontColorSelected: white, font: small }
+},
+}
