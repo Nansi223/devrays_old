@@ -13,8 +13,8 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 
 		cfg.title = "Devrays";
-		cfg.width = 1280;
-		cfg.height = 720;
+		cfg.width = 1024;
+		cfg.height = 600;
 		cfg.useGL20 = true;
 		// cfg.fullscreen = true;
 		cfg.addIcon("atlas/icon32.png", FileType.Internal);

@@ -253,7 +253,8 @@ public class LogicUi {
 		switch (type)
 		{
 			case 0: // Integer
-				argWidget = new NumericInput((Integer) arg, 0, 255, 0);
+			case 1:
+				argWidget = new NumericInput((Integer) arg, 0, type == 0 ? 255 : 65535, 0);
 				((NumericInput) argWidget).setListener(new NumericInput.Listener() {
 
 					@Override
@@ -262,10 +263,6 @@ public class LogicUi {
 						updateArg(input.getName(), value);
 					}
 				});
-			break;
-
-			case 1: // Short
-
 			break;
 
 			case 2: // sFloat
@@ -436,7 +433,7 @@ public class LogicUi {
 		for (int i = 0; i != EditorScreen.map.timers.size; i++)
 		{
 			timerList.add("Timer #" + i);
-			timerList.add(new NumericInput(1000, 10, 600000, 0));
+			timerList.add(new NumericInput(1000, 100, 600000, 0));
 			timerList.add(new NumericInput(0, 0, 255, 0)).row();
 		}
 	}
