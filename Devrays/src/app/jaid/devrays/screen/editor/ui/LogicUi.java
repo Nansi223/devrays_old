@@ -25,7 +25,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.FocusListener;
+import com.badlogic.gdx.scenes.scene2d.utils.FocusListener.FocusEvent;
 import com.badlogic.gdx.utils.Array;
 
 public class LogicUi {
@@ -241,7 +244,7 @@ public class LogicUi {
 		updateEventList();
 	}
 
-	private static Actor getArgWidget(byte type, int index, int commandIndex)
+	private static Actor getArgWidget(byte type, final int index, final int commandIndex)
 	{
 		Actor argWidget = null;
 		boolean isEvent = commandIndex == -1;
@@ -278,7 +281,18 @@ public class LogicUi {
 			break;
 
 			case 3: // String
-				// argBuilder.add("");
+				TextField textField = new TextField("", Devrays.skin);
+				textField.setMessageText(Meta.sdk.commands[selectedEvent.commands.get(commandIndex).type].parameters[index].name);
+				textField.addListener(new FocusListener() {
+
+					@Override
+					public void keyboardFocusChanged(FocusEvent event, Actor actor, boolean focused)
+					{
+						if (!focused)
+							updateArg(index + "\n" + commandIndex, 2);
+					}
+				});
+				argWidget = textField;
 			break;
 
 			case 4: // Point

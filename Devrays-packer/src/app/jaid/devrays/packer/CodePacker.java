@@ -29,54 +29,41 @@ public class CodePacker {
 	{
 		Json json = new Json();
 
-		// 0: 8-Bit unsigned
 		addParameterType(PARAM_BYTE);
-		// 1: 16-Bit unsigned
 		addParameterType(PARAM_SHORT);
-		// 2: 16-Bit 0,00 to 655,36
 		addParameterType(PARAM_SFLOAT);
-		// 3: 2-Byte + n Bytes
 		addParameterType(PARAM_STRING);
-		// 4: 4-Byte Vector {x/4, y/4}
 		addParameterType(PARAM_POINT);
-		// 6: 8-Byte Vector {Point, Point}
 		addParameterType(PARAM_RECT);
-		// 7: 4n-Byte Vector {n Points}
 		addParameterType(PARAM_POLYGON);
-		// 5: 2-Byte Vector {x, y}
 		addParameterType(PARAM_BLOCK);
 
-		// 0
 		addEvent("start");
-		// 1
 		addEvent("timerTick", newParameter(PARAM_BYTE, "TimerID"));
 		addEvent("timerStep", newParameter(PARAM_BYTE, "TimerID"), newParameter(PARAM_BYTE, "CurrentStep"));
-		// 2
 		addEvent("inRect", newParameter(PARAM_RECT, "Area"), newParameter(PARAM_BYTE, "TeamID"), newParameter(PARAM_BYTE, "Count"));
-		// 3
 		addEvent("inPolygon", newParameter(PARAM_POLYGON, "Area"), newParameter(PARAM_BYTE, "TeamID"), newParameter(PARAM_BYTE, "Count"));
-		// 4
-		addEvent("swarmDie", newParameter(PARAM_BYTE, "EnemyGroupID"));
-		// 5
+		addEvent("swarmDie", newParameter(PARAM_BYTE, "SwarmID"));
 		addEvent("blockHit", newParameter(PARAM_BLOCK, "BlockPosition"), newParameter(PARAM_BYTE, "BulletTeamID"));
 
-		// 0
 		addCommand("stopListening");
 		addCommand("teleportPlayers", newParameter(PARAM_POINT, "NewPosition"));
-		// 1
 		addCommand("startTimer", newParameter(PARAM_BYTE, "TimerID"));
-		// 2
 		addCommand("resumeTimer", newParameter(PARAM_BYTE, "TimerID"));
-		// 3
 		addCommand("stopTimer", newParameter(PARAM_BYTE, "TimerID"));
-		// 4
 		addCommand("setBlock", newParameter(PARAM_BLOCK, "BlockPosition"), newParameter(PARAM_BYTE, "Type"));
 		addCommand("setBlocksInRect", newParameter(PARAM_RECT, "IntersectingRect"), newParameter(PARAM_BYTE, "Type"));
 		addCommand("setBlocksInPolygon", newParameter(PARAM_POLYGON, "IntersectingPolygon"), newParameter(PARAM_BYTE, "Type"));
-		// 5
-		addCommand("spawnSwarm", newParameter(PARAM_BYTE, "EnemyGroupID"));
-		// 6
+		addCommand("spawnSwarm", newParameter(PARAM_BYTE, "SwarmID"));
 		addCommand("explode", newParameter(PARAM_POINT, "Position"), newParameter(PARAM_SFLOAT, "Power"));
+		addCommand("displayText", newParameter(PARAM_BYTE, "LabelID"), newParameter(PARAM_STRING, "Texffzcvgft"));
+		addCommand("removeText", newParameter(PARAM_BYTE, "LabelID"));
+		addCommand("die");
+		addCommand("displayTimer", newParameter(PARAM_BYTE, "TimerID"));
+		addCommand("hideTimer", newParameter(PARAM_BYTE, "Timer ID"));
+		addCommand("setEnvironmentColor", newParameter(PARAM_BYTE, "Red"), newParameter(PARAM_BYTE, "Green"), newParameter(PARAM_BYTE, "Blue"));
+		addCommand("removeSwarm", newParameter(PARAM_BYTE, "SwarmID"));
+		addCommand("t3stcomm4nd");
 
 		addEnemyPreset("Eye", 0, 30, Colors.WHITE);
 		addEnemyPreset("Power Eye", 0, 100, Colors.RED);
