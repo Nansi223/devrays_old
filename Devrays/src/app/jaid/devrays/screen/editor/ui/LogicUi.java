@@ -286,7 +286,7 @@ public class LogicUi {
 					public void keyboardFocusChanged(FocusEvent event, Actor actor, boolean focused)
 					{
 						if (!focused)
-							updateArg(index + "\n" + commandIndex, 2);
+							updateArg(index + "\n" + commandIndex, ((TextField) actor).getText());
 					}
 				});
 				argWidget = textField;

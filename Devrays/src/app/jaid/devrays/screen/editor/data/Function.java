@@ -46,6 +46,9 @@ public class Function {
 				case 6: // Polygon
 					argBuilder.add(null);
 				break;
+				case 8: // Color
+					argBuilder.add(null);
+				break;
 			}
 
 		args = argBuilder.toArray();
@@ -69,6 +72,8 @@ public class Function {
 				string += "Point#" + EditorScreen.map.points.indexOf((Point) arg, false);
 			else if (arg instanceof Float)
 				string += String.valueOf(arg);
+			else if (arg instanceof String)
+				string += "\"" + (String) arg + "\"";
 			else
 				string += "?";
 
@@ -78,5 +83,4 @@ public class Function {
 
 		return string + ")";
 	}
-
 }

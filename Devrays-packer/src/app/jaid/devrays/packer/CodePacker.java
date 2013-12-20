@@ -58,7 +58,8 @@ public class CodePacker {
 		addCommand("setBlocksInPolygon", "(empty)", newParameter(PARAM_POLYGON, "IntersectingPolygon"), newParameter(PARAM_BYTE, "Type"));
 		addCommand("spawnSwarm", "(empty)", newParameter(PARAM_BYTE, "SwarmID"));
 		addCommand("explode", "(empty)", newParameter(PARAM_POINT, "Position"), newParameter(PARAM_SFLOAT, "Power"));
-		addCommand("displayText", "(empty)", newParameter(PARAM_BYTE, "LabelID"), newParameter(PARAM_STRING, "Texffzcvgft"));
+		addCommand("displayTempText", "(empty)", newParameter(PARAM_SHORT, "LengthMs"), newParameter(PARAM_STRING, "Text"));
+		addCommand("displayText", "(empty)", newParameter(PARAM_BYTE, "LabelID"), newParameter(PARAM_STRING, "Text"));
 		addCommand("removeText", "(empty)", newParameter(PARAM_BYTE, "LabelID"));
 		addCommand("die", "(empty)");
 		addCommand("displayTimer", "(empty)", newParameter(PARAM_BYTE, "TimerID"));
