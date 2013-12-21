@@ -2,8 +2,6 @@ package app.jaid.devrays.debug;
 
 import java.util.HashMap;
 
-import com.badlogic.gdx.utils.Json;
-
 public class Session {
 
 	// Exception[] exceptions;

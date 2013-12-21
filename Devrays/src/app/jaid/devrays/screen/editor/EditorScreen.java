@@ -2,11 +2,9 @@ package app.jaid.devrays.screen.editor;
 
 import static app.jaid.devrays.Devrays.batch;
 import static app.jaid.devrays.screen.editor.ui.Toolbar.*;
-import app.jaid.Jtil;
 import app.jaid.devrays.Devrays;
 import app.jaid.devrays.Graphics;
 import app.jaid.devrays.Meta;
-import app.jaid.devrays.debug.Log;
 import app.jaid.devrays.screen.editor.tools.DrawHandler;
 import app.jaid.devrays.screen.editor.tools.EnvironmentHandler;
 import app.jaid.devrays.screen.editor.ui.EnemiesUi;

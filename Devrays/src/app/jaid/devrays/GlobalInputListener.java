@@ -1,8 +1,8 @@
 package app.jaid.devrays;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.InputProcessor;
 
 public class GlobalInputListener implements InputProcessor {
 

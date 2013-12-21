@@ -1,0 +1,37 @@
+# IDE Directories #
+
+.settings/
+[Gg]en/
+[Bb]in/
+[Tt]mp/
+
+# IDE Meta/Config Files #
+
+*~.nib
+*.launch
+.cproject
+.buildpath
+local.properties
+
+# Binaries #
+
+*.apk
+*.ap_
+*.dex
+*.class
+*.jar
+
+# OS Generated Files #
+
+*.DS_Store
+*.DS_Store?
+*._*
+*.Spotlight-V100
+*.Trashes
+*ehthumbs.db
+*Thumbs.db
+
+# Image Projects #
+
+*.psd
+*.xcf

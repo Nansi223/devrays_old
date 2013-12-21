@@ -3,9 +3,7 @@ package app.jaid.devrays.screen.open;
 import app.jaid.devrays.Devrays;
 
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.Array;
 
 public class OpenScreen implements Screen {
 

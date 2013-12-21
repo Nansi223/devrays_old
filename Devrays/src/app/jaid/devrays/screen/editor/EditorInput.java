@@ -1,10 +1,7 @@
 package app.jaid.devrays.screen.editor;
 
 import app.jaid.devrays.Devrays;
-import app.jaid.devrays.screen.editor.tools.EnvironmentHandler;
-import app.jaid.devrays.screen.editor.ui.TaskButton;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.MathUtils;
@@ -20,28 +17,28 @@ public class EditorInput implements InputProcessor {
 		{
 			case Keys.F2:
 				Devrays.startGame();
-			break;
+				break;
 
 			case Keys.UP:
 				EditorScreen.map.setSize(EditorScreen.map.tilemap.getWidth(), EditorScreen.map.tilemap.getHeight() + 1);
-			break;
+				break;
 
 			case Keys.DOWN:
 				EditorScreen.map.setSize(EditorScreen.map.tilemap.getWidth(), EditorScreen.map.tilemap.getHeight() - 1);
-			break;
+				break;
 
 			case Keys.RIGHT:
 				EditorScreen.map.setSize(EditorScreen.map.tilemap.getWidth() + 1, EditorScreen.map.tilemap.getHeight());
-			break;
+				break;
 
 			case Keys.LEFT:
 				EditorScreen.map.setSize(EditorScreen.map.tilemap.getWidth() - 1, EditorScreen.map.tilemap.getHeight());
-			break;
+				break;
 
 			case Keys.ESCAPE:
 				if (TaskHandler.taskType != 0)
 					EditorScreen.endTask(null);
-			break;
+				break;
 		}
 
 		return false;

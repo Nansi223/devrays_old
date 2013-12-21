@@ -1,7 +1,5 @@
 package app.jaid.devrays.screen.editor;
 
-import app.jaid.devrays.debug.Log;
-import app.jaid.devrays.screen.editor.ui.Toolbar;
 import app.jaid.devrays.world.Map;
 
 public class EditorMapLoader {

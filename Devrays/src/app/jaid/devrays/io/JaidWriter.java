@@ -33,12 +33,12 @@ public class JaidWriter {
 	{
 		for (int value : values)
 			try
-			{
+		{
 				stream.write((byte) value);
-			} catch (IOException e)
-			{
-				app.jaid.devrays.debug.Log.e(e);
-			}
+		} catch (IOException e)
+		{
+			app.jaid.devrays.debug.Log.e(e);
+		}
 	}
 
 	public void write2Bytes(int... values)

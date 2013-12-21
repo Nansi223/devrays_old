@@ -1,7 +1,6 @@
 package app.jaid.devrays.ui;
 
 import static app.jaid.devrays.Devrays.uibatch;
-
 import app.jaid.devrays.Devrays;
 
 import com.badlogic.gdx.Gdx;
@@ -12,11 +11,6 @@ import com.badlogic.gdx.math.Interpolation;
 public class Tooltip {
 
 	private static String	text	= "";
-
-	public static void set(String addition)
-	{
-		text += text.length() != 0 ? "\n-------\n" + addition : addition;
-	}
 
 	public static void render()
 	{
@@ -35,6 +29,11 @@ public class Tooltip {
 			font.drawMultiLine(uibatch, text, x, y);
 			text = "";
 		}
+	}
+
+	public static void set(String addition)
+	{
+		text += text.length() != 0 ? "\n-------\n" + addition : addition;
 	}
 
 }

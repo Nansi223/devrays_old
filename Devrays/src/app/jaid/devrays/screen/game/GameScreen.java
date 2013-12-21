@@ -1,7 +1,6 @@
 package app.jaid.devrays.screen.game;
 
 import static app.jaid.devrays.Devrays.batch;
-
 import app.jaid.Jtil;
 import app.jaid.Point;
 import app.jaid.devrays.Atlas;

@@ -2,20 +2,14 @@ package app.jaid.devrays.io;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 
 import app.jaid.Point;
 import app.jaid.devrays.Devrays;
-import app.jaid.devrays.screen.editor.EditorMap;
-import app.jaid.devrays.screen.editor.data.Event;
-import app.jaid.devrays.screen.open.MapThumbnailDrawer;
 import app.jaid.devrays.world.Map;
 import app.jaid.devrays.world.Tile;
-import app.jaid.devrays.world.Tilemap;
 import app.jaid.devrays.world.logic.Timer;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
 
@@ -88,7 +82,7 @@ public class MapCompiler {
 		html.append("<table border='1px solid' class='t'><tr><td class='h' colspan='2'>Map Compilation Report</td></tr>");
 
 		// noformat
-			String[] properties = new String[] {
+		String[] properties = new String[] {
 				"Title", 		map.title,
 				"Filename", 	new StringBuilder(file.path()).insert(file.path().lastIndexOf("/") + 1, "<br>").toString(),
 				"Date",			new SimpleDateFormat("dd.MM.yyyy HH:mm").format(new Date()),
@@ -98,8 +92,8 @@ public class MapCompiler {
 				"Points", 		String.valueOf(map.points.size),
 				"Filesize", 	new DecimalFormat("#,###,###").format(file.file().length()) + " Byte",
 				"Needed Time",	compileTime + " ms"
-			};
-			// /noformat
+		};
+		// /noformat
 
 		for (int i = 0; i != properties.length; i += 2)
 		{

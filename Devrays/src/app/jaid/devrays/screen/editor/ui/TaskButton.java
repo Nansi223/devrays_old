@@ -1,5 +1,6 @@
 package app.jaid.devrays.screen.editor.ui;
 
+import static app.jaid.devrays.screen.editor.TaskHandler.*;
 import app.jaid.Point;
 import app.jaid.devrays.Devrays;
 import app.jaid.devrays.debug.Log;
@@ -8,7 +9,6 @@ import app.jaid.devrays.screen.editor.EditorScreen;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import static app.jaid.devrays.screen.editor.TaskHandler.*;
 
 public class TaskButton extends TextButton {
 
@@ -40,19 +40,19 @@ public class TaskButton extends TextButton {
 					setText("(Set Point)");
 				else
 					setText("Point #" + EditorScreen.map.points.indexOf((Point) object, false) + " " + ((Point) object).toString());
-			break;
+				break;
 			case OBJECTTYPE_RECT:
 				if (object == null)
 					setText("(Set Rect)");
 				else
 					;
-			break;
+				break;
 			case OBJECTTYPE_POLYGON:
 				if (object == null)
 					setText("(Set Polygon)");
 				else
 					;
-			break;
+				break;
 		}
 	}
 

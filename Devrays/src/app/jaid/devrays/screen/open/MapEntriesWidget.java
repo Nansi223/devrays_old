@@ -1,14 +1,10 @@
 package app.jaid.devrays.screen.open;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 import app.jaid.devrays.Devrays;
 import app.jaid.devrays.debug.Log;
 import app.jaid.devrays.io.MapLoader;
-import app.jaid.devrays.screen.editor.EditorScreen;
-import app.jaid.devrays.screen.editor.StandartEditorMapLoader;
-import app.jaid.devrays.world.Map;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -52,12 +48,12 @@ public class MapEntriesWidget extends ScrollPane {
 		Log.m(mapfiles.length + " map files shown in map opening screen.");
 		for (FileHandle mapfile : mapfiles)
 			try
-			{
+		{
 				table.add(new MapEntry(MapLoader.read(new FileInputStream(mapfile.file())), mapfile, showExisting, trash)).row().pad(20);
-			} catch (Exception e)
-			{
-				app.jaid.devrays.debug.Log.e(e);
-			}
+		} catch (Exception e)
+		{
+			app.jaid.devrays.debug.Log.e(e);
+		}
 
 		return table;
 	}

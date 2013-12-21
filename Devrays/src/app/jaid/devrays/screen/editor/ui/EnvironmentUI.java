@@ -1,11 +1,9 @@
 package app.jaid.devrays.screen.editor.ui;
 
+import static app.jaid.devrays.screen.editor.EditorScreen.map;
 import app.jaid.devrays.Devrays;
-import app.jaid.devrays.debug.Log;
-import app.jaid.devrays.screen.editor.EditorScreen;
 import app.jaid.devrays.screen.editor.tools.EnvironmentHandler;
 import app.jaid.devrays.ui.Cards;
-import static app.jaid.devrays.screen.editor.EditorScreen.*;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
@@ -107,13 +105,13 @@ public class EnvironmentUI {
 		{
 			case TAB_POINT:
 				updatePointList();
-			break;
+				break;
 			case TAB_RECT:
 				updateRectList();
-			break;
+				break;
 			case TAB_POLYGON:
 				updatePolygonList();
-			break;
+				break;
 		}
 	}
 

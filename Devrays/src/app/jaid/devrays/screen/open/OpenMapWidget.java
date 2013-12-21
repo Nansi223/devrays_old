@@ -2,7 +2,6 @@ package app.jaid.devrays.screen.open;
 
 import app.jaid.devrays.Devrays;
 import app.jaid.devrays.screen.editor.EditorScreen;
-import app.jaid.devrays.screen.editor.StandartEditorMapLoader;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;

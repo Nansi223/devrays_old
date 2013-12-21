@@ -2,9 +2,7 @@ package app.jaid.devrays;
 
 import app.jaid.devrays.debug.Log;
 import app.jaid.devrays.debug.Schedule;
-import app.jaid.devrays.debug.Session;
 import app.jaid.devrays.debug.SessionBuilder;
-import app.jaid.devrays.net.HTTP;
 import app.jaid.devrays.net.SessionSender;
 import app.jaid.devrays.screen.game.GameScreen;
 import app.jaid.devrays.screen.loading.LoadingScreen;
@@ -15,7 +13,6 @@ import app.jaid.devrays.ui.Tooltip;
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
@@ -28,8 +25,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.badlogic.gdx.utils.async.AsyncExecutor;
-import com.badlogic.gdx.utils.async.AsyncTask;
 
 public class Devrays extends Game {
 

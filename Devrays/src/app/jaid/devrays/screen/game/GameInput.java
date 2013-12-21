@@ -20,30 +20,30 @@ public class GameInput implements InputProcessor {
 		switch (keycode) {
 			case 51:
 				Controller.movingUp = true;
-			break;
+				break;
 			case 29:
 				Controller.movingLeft = true;
-			break;
+				break;
 			case 47:
 				Controller.movingDown = true;
-			break;
+				break;
 			case 32:
 				Controller.movingRight = true;
-			break;
+				break;
 			case 62:
 				Controller.shooting = true;
-			break;
+				break;
 
 			case com.badlogic.gdx.Input.Keys.F11:
 				if (Gdx.graphics.isFullscreen())
 					Gdx.graphics.setDisplayMode(1280, 720, false);
 				else
 					Gdx.graphics.setDisplayMode(Gdx.graphics.getDesktopDisplayMode());
-			break;
+				break;
 
 			case com.badlogic.gdx.Input.Keys.O:
 				Explosion.trigger(new Point(3, 3), Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) ? 20 : 10);
-			break;
+				break;
 
 			case com.badlogic.gdx.Input.Keys.P:
 				for (int i = -180; i != 180; i++)
@@ -54,15 +54,15 @@ public class GameInput implements InputProcessor {
 					GameScreen.weapons.get(0).fire();
 				}
 				GameScreen.weapons.get(0).angle = -90;
-			break;
+				break;
 
 			case com.badlogic.gdx.Input.Keys.ESCAPE:
 				Gdx.app.exit();
-			break;
+				break;
 
 			case com.badlogic.gdx.Input.Keys.B:
 				GameScreen.player.blink(Color.GREEN);
-			break;
+				break;
 
 			default:
 				return false;
@@ -82,19 +82,19 @@ public class GameInput implements InputProcessor {
 		switch (keycode) {
 			case 51:
 				Controller.movingUp = false;
-			break;
+				break;
 			case 29:
 				Controller.movingLeft = false;
-			break;
+				break;
 			case 47:
 				Controller.movingDown = false;
-			break;
+				break;
 			case 32:
 				Controller.movingRight = false;
-			break;
+				break;
 			case 62:
 				Controller.shooting = false;
-			break;
+				break;
 			default:
 				return false;
 		}

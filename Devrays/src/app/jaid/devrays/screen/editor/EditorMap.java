@@ -64,10 +64,7 @@ public class EditorMap extends Map {
 		}
 		else
 			popup.add("Could not compile:\n" + (String) result);
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/Jaid/devrays.git
 		Cards.add("Compilation Report", popup, true, 0);
 	}
 

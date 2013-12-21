@@ -1,7 +1,5 @@
 package app.jaid;
 
-import java.util.HashMap;
-
 import com.badlogic.gdx.utils.TimeUtils;
 
 public class JTimeUtils {

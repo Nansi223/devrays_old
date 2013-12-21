@@ -1,19 +1,17 @@
 package app.jaid.devrays.screen.editor.tools;
 
-import static app.jaid.devrays.screen.editor.EditorScreen.*;
+import static app.jaid.devrays.screen.editor.EditorScreen.map;
+import static app.jaid.devrays.screen.editor.EditorScreen.subtool;
 import static app.jaid.devrays.screen.editor.ui.Toolbar.*;
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Interpolation;
-
 import app.jaid.GridTools;
 import app.jaid.Point;
 import app.jaid.devrays.Atlas;
 import app.jaid.devrays.Devrays;
 import app.jaid.devrays.InputCore;
 import app.jaid.devrays.screen.editor.EditorScreen;
-import app.jaid.devrays.ui.Tooltip;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 
 public class DrawHandler {
 

@@ -120,12 +120,9 @@ public class MenuScreen implements Screen {
 				}
 			});
 		}
-<<<<<<< HEAD
-=======
 
 		ui.add(new NumericInput(15, 3, 7777, 0)).row();
 		ui.add(new NumericInput(8.88f, 2, 655.35f, 2)).row();
->>>>>>> branch 'master' of https://github.com/Jaid/devrays.git
 	}
 
 	private void buttonClick(int button)

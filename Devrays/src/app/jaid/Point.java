@@ -1,6 +1,7 @@
 package app.jaid;
 
 import app.jaid.devrays.Devrays;
+
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Rectangle;
 

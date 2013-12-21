@@ -3,7 +3,6 @@ package app.jaid.devrays.screen.editor.ui;
 import app.jaid.Point;
 import app.jaid.devrays.Atlas;
 import app.jaid.devrays.Devrays;
-import app.jaid.devrays.debug.Log;
 import app.jaid.devrays.screen.editor.EditorScreen;
 import app.jaid.devrays.screen.editor.tools.DrawHandler;
 import app.jaid.devrays.screen.editor.tools.EnvironmentHandler;

@@ -23,32 +23,32 @@ public class Function {
 				case 0: // Byte (0-255)
 				case 1: // Short (0-65535)
 					argBuilder.add(new Integer((byte) 0));
-				break;
+					break;
 
 				case 2: // sFloat (0.00-655.35)
 					argBuilder.add(new Float(0f));
-				break;
+					break;
 
 				case 3: // String
 					argBuilder.add("");
-				break;
+					break;
 
 				case 7: // Block (<0-255, 0-255>)
 					argBuilder.add(new Block());
-				break;
+					break;
 
 				case 4: // EditorPoint
 					argBuilder.add(null);
-				break;
+					break;
 				case 5: // Rect
 					argBuilder.add(null);
-				break;
+					break;
 				case 6: // Polygon
 					argBuilder.add(null);
-				break;
+					break;
 				case 8: // Color
 					argBuilder.add(null);
-				break;
+					break;
 			}
 
 		args = argBuilder.toArray();

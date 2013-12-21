@@ -8,8 +8,6 @@ import app.jaid.devrays.Devrays;
 import app.jaid.devrays.debug.Log;
 import app.jaid.devrays.screen.editor.EditorScreen;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;

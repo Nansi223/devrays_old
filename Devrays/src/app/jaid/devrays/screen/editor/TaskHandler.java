@@ -3,12 +3,8 @@ package app.jaid.devrays.screen.editor;
 import app.jaid.Point;
 import app.jaid.devrays.Meta;
 import app.jaid.devrays.meta.code.CommandType;
-import app.jaid.devrays.meta.code.EventType;
-import app.jaid.devrays.screen.editor.data.Event;
 import app.jaid.devrays.screen.editor.ui.LogicUi;
 import app.jaid.devrays.screen.editor.ui.TaskButton;
-
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 public class TaskHandler {
 
@@ -40,17 +36,17 @@ public class TaskHandler {
 			case TASKTYPE_SELECTED_EVENT_ARGUMENT_RECT:
 			case TASKTYPE_SELECTED_EVENT_ARGUMENT_POLYGON:
 				LogicUi.updateArg(String.valueOf(args[0]), returnObject);
-			break;
+				break;
 
 			case TASKTYPE_COMMAND_ARGUMENT_POINT:
 			case TASKTYPE_COMMAND_ARGUMENT_RECT:
 			case TASKTYPE_COMMAND_ARGUMENT_POLYGON:
 				LogicUi.updateArg(args[0] + "\n" + args[1], returnObject);
-			break;
+				break;
 
 			case TASKTYPE_SWARM_MEMBER_SPAWNPOINT:
 				EditorScreen.map.swarms.get(args[0]).enemies.get(args[1]).position = (Point) returnObject;
-			break;
+				break;
 		}
 	}
 

@@ -1,9 +1,7 @@
 package app.jaid.devrays.screen.menu;
 
 import app.jaid.Jtil;
-import app.jaid.devrays.Atlas;
 import app.jaid.devrays.Devrays;
-import app.jaid.devrays.Graphics;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;

@@ -1,24 +1,21 @@
 package app.jaid.devrays.screen.editor.tools;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.utils.Array;
-
+import static app.jaid.devrays.screen.editor.EditorScreen.*;
+import static app.jaid.devrays.screen.editor.ui.Toolbar.TOOL_ENVIRONMENT;
 import app.jaid.Point;
 import app.jaid.devrays.Atlas;
 import app.jaid.devrays.Devrays;
 import app.jaid.devrays.Graphics;
 import app.jaid.devrays.InputCore;
-import app.jaid.devrays.debug.Log;
 import app.jaid.devrays.screen.editor.EditorScreen;
 import app.jaid.devrays.screen.editor.TaskHandler;
 import app.jaid.devrays.screen.editor.ui.EnvironmentUI;
-import app.jaid.devrays.screen.editor.ui.TaskButton;
 import app.jaid.devrays.ui.Tooltip;
-import static app.jaid.devrays.screen.editor.EditorScreen.*;
-import static app.jaid.devrays.screen.editor.ui.Toolbar.*;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
 
 public class EnvironmentHandler {
 

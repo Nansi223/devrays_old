@@ -4,12 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.util.zip.InflaterInputStream;
-
-import org.omg.CORBA.ByteHolder;
-
-import app.jaid.devrays.debug.Log;
 
 public class JaidReader {
 

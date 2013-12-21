@@ -48,23 +48,23 @@ public class Particle {
 		switch (quality) {
 			case 0: // OFF
 				quantity = 0;
-			break;
+				break;
 			case 1: // SMARTPHONE
 				quantity = 1;
 				size = 0.3f;
-			break;
+				break;
 			case 2: // NORMAL
 				quantity = 2;
 				size = 0.25f;
-			break;
+				break;
 			case 3: // FANCY
 				quantity = 5;
 				size = 0.2f;
-			break;
+				break;
 			case 4: // VISUAL SHAPES
 				quantity = 1000;
 				size = 0.15f;
-			break;
+				break;
 		}
 	}
 

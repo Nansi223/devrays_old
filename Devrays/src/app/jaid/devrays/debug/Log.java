@@ -3,7 +3,6 @@ package app.jaid.devrays.debug;
 import static app.jaid.devrays.Devrays.delta;
 import static app.jaid.devrays.Devrays.uibatch;
 
-import java.sql.Connection;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
@@ -16,7 +15,6 @@ import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Logger;
 
 public class Log {
 

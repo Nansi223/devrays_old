@@ -2,13 +2,10 @@ package app.jaid.devrays.io;
 
 import java.io.InputStream;
 
-import com.badlogic.gdx.utils.Array;
-
 import app.jaid.devrays.debug.Log;
 import app.jaid.devrays.world.Map;
 import app.jaid.devrays.world.Tile;
 import app.jaid.devrays.world.Tilemap;
-import app.jaid.devrays.world.logic.Timer;
 
 public class MapLoader {
 
