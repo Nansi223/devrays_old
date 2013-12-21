@@ -1,4 +1,16 @@
-/bin
+bin/
+gen/
+
+*.apk
+*.ap_
+*.dex
+*.class
+
+.gradle/
+build/
+
+local.properties
+proguard/
 
 # OS Files #
 .DS_Store
