@@ -1,0 +1,6 @@
+{
+	combineSubdirectories: true,
+	pot: false,
+	duplicatePadding: true,
+	edgePadding: true
+}
