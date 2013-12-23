@@ -19,7 +19,6 @@ local.properties
 *.ap_
 *.dex
 *.class
-*.jar
 
 # OS Generated Files #
 
