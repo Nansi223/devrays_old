@@ -9,9 +9,12 @@
 
 *~.nib
 *.launch
+.project
 .cproject
 .buildpath
+.classpath
 local.properties
+javadoc.xml
 
 # Binaries #
 
