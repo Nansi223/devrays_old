@@ -37,7 +37,6 @@ public class LogicUi {
 		{
 			toggleCards();
 		}
-
 	}
 
 	public static Event	selectedEvent;
@@ -221,7 +220,7 @@ public class LogicUi {
 			updateEventList();
 		}
 		else
-			// Ein Arg eines Commands des aktuell selektierten Events wird aktualisiert
+		// Ein Arg eines Commands des aktuell selektierten Events wird aktualisiert
 		{
 			selectedEvent.commands.get(actorProps.get(1)).args[actorProps.get(0)] = newArg;
 			updateEventList();
@@ -260,7 +259,7 @@ public class LogicUi {
 						updateArg(input.getName(), value);
 					}
 				});
-				break;
+			break;
 
 			case 2: // sFloat
 				argWidget = new NumericInput(0, 0, 655.35f, 2);
@@ -272,7 +271,7 @@ public class LogicUi {
 						updateArg(input.getName(), floatValue);
 					}
 				});
-				break;
+			break;
 
 			case 3: // String
 				TextField textField = new TextField("", Devrays.skin);
@@ -287,18 +286,18 @@ public class LogicUi {
 					}
 				});
 				argWidget = textField;
-				break;
+			break;
 
 			case 4: // Point
 				if (isEvent)
 					argWidget = new TaskButton(TaskHandler.TASKTYPE_SELECTED_EVENT_ARGUMENT_POINT, arg, index);
 				else
 					argWidget = new TaskButton(TaskHandler.TASKTYPE_COMMAND_ARGUMENT_POINT, arg, index, commandIndex);
-				break;
+			break;
 
 			case 7: // Block
 				// argBuilder.add(new Block());
-				break;
+			break;
 		}
 
 		if (argWidget != null)
