@@ -6,6 +6,9 @@ import java.util.Date;
 
 import app.jaid.Point;
 import app.jaid.devrays.Devrays;
+import app.jaid.devrays.Meta;
+import app.jaid.devrays.screen.editor.data.Command;
+import app.jaid.devrays.screen.editor.data.Event;
 import app.jaid.devrays.world.Map;
 import app.jaid.devrays.world.Tile;
 import app.jaid.devrays.world.logic.Timer;
@@ -17,10 +20,12 @@ public class MapCompiler {
 
 	public static Object compile(Map map, String code)
 	{
-		String[] report = null;
-		Array<String> warnings = new Array<String>();
+		String validationResult = validate(map);
+		if (validationResult != null)
+			return validationResult;
 
-		report = new String[2];
+		String[] report = new String[2];
+		Array<String> warnings = new Array<String>();
 		String filename = new SimpleDateFormat("yyMMdd_").format(new Date()) + map.title.toLowerCase().replace(' ', '_');
 
 		long startTime = System.currentTimeMillis();
@@ -152,5 +157,62 @@ public class MapCompiler {
 
 		report[1] = warnings.toString("\n");
 		return report;
+	}
+
+	public static String validate(Map map)
+	{
+		// Check if spawn point is set, fail if not
+
+		boolean startEventFound = false, spawnpointFound = false;
+
+		for (Event event : map.events)
+			if (event.type == 0)
+			{
+				startEventFound = true;
+				for (Command command : event.commands)
+					if (command.type == 0)
+						spawnpointFound = true;
+			}
+
+		if (!startEventFound)
+			return "No Start Event found!";
+		if (!spawnpointFound)
+			return "No Spawn Point has been set!";
+
+		// Check if every point has a still existing reference
+
+		String argumentValidationResult = null;
+
+		for (Event event : map.events)
+		{
+
+			for (int i = 0; i != event.args.length; i++)
+			{
+				argumentValidationResult = validateArgument(map, event.args[i]);
+				if (argumentValidationResult != null)
+					return "Argument #" + i + " of " + event.toString(false) + " " + argumentValidationResult;
+			}
+
+			for (Command command : event.commands)
+				for (int i = 0; i != command.args.length; i++)
+				{
+					argumentValidationResult = validateArgument(map, command.args[i]);
+					if (argumentValidationResult != null)
+						return "Argument #" + i + " of " + event.toString(false) + "." + Meta.sdk.commands[command.type].name + " " + argumentValidationResult;
+				}
+		}
+
+		return null;
+	}
+
+	private static String validateArgument(Map map, Object argument)
+	{
+		if (argument == null)
+			return "is null!";
+
+		if (argument instanceof Point && !map.points.contains((Point) argument, false))
+			return "is a dead Point reference!";
+
+		return null;
 	}
 }

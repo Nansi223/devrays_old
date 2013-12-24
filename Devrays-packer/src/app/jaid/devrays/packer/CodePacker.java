@@ -48,8 +48,8 @@ public class CodePacker {
 		addEvent("swarmDie", newParameter(PARAM_BYTE, "SwarmID"));
 		addEvent("blockHit", newParameter(PARAM_BLOCK, "BlockPosition"), newParameter(PARAM_BYTE, "BulletTeamID"));
 
-		addCommand("stopListening");
 		addCommand("teleportPlayers", newParameter(PARAM_POINT, "NewPosition"));
+		addCommand("stopListening");
 		addCommand("startTimer", newParameter(PARAM_BYTE, "TimerID"));
 		addCommand("resumeTimer", newParameter(PARAM_BYTE, "TimerID"));
 		addCommand("stopTimer", newParameter(PARAM_BYTE, "TimerID"));
@@ -65,7 +65,7 @@ public class CodePacker {
 		addCommand("die");
 		addCommand("displayTimer", newParameter(PARAM_BYTE, "TimerID"));
 		addCommand("hideTimer", newParameter(PARAM_BYTE, "Timer ID"));
-		addCommand("setEnvironmentColor", newParameter(PARAM_BYTE, "Red"), newParameter(PARAM_BYTE, "Green"), newParameter(PARAM_BYTE, "Blue"));
+		addCommand("setEnvironmentColor", newParameter(PARAM_COLOR, "Color"));
 		addCommand("removeSwarm", newParameter(PARAM_BYTE, "SwarmID"));
 		addCommand("forbidAction", newParameter(PARAM_BYTE, "ActionID"));
 		addCommand("allowAction", newParameter(PARAM_BYTE, "ActionID"));

@@ -48,7 +48,7 @@ public class EditorMap extends Map {
 
 		Table popup = new Table(Devrays.skin);
 
-		if (result != null)
+		if (result instanceof String[])
 		{
 			String[] resultLog = (String[]) result;
 			Table stats = new Table(Devrays.skin);

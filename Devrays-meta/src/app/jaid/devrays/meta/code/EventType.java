@@ -4,5 +4,4 @@ public class EventType {
 
 	public String		name;
 	public Parameter[]	parameters;
-
 }
