@@ -65,10 +65,11 @@ public class CodePacker {
 		addCommand("die");
 		addCommand("displayTimer", newParameter(PARAM_BYTE, "TimerID"));
 		addCommand("hideTimer", newParameter(PARAM_BYTE, "Timer ID"));
-		addCommand("setEnvironmentColor", newParameter(PARAM_COLOR, "Color"));
 		addCommand("removeSwarm", newParameter(PARAM_BYTE, "SwarmID"));
 		addCommand("forbidAction", newParameter(PARAM_BYTE, "ActionID"));
 		addCommand("allowAction", newParameter(PARAM_BYTE, "ActionID"));
+		addCommand("addEnvironmentEffect", newParameter(PARAM_BYTE, "EnvironmentEffectID"));
+		addCommand("removeEnvironmentEffect", newParameter(PARAM_BYTE, "EnvironmeSntEffectID"));
 
 		addEnemyPreset("Eye", 0, 30, Colors.WHITE);
 		addEnemyPreset("Power Eye", 0, 100, Colors.RED);

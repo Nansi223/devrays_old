@@ -31,7 +31,7 @@ public class MapLoader {
 		map.tilemap = new Tilemap();
 		map.tilemap.tiles = new Tile[width][height];
 
-		// Read block data
+		// Read tiles
 
 		for (int x = 0; x != width; x++)
 			for (int y = 0; y != height; y++)

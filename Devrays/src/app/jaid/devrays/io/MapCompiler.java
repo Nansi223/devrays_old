@@ -37,21 +37,27 @@ public class MapCompiler {
 		writer.write1Byte(map.tilemap.getWidth(), map.tilemap.getHeight());
 		writer.writeString(map.title);
 
+		// write Tiles
+
 		for (int x = 0; x != map.tilemap.getWidth(); x++)
 			for (int y = 0; y != map.tilemap.getHeight(); y++)
 				writer.write1Byte(map.tilemap.tiles[x][y].type);
+
+		// write Points
 
 		writer.write1Byte(map.points.size);
 		for (Point point : map.points)
 			writer.write2Bytes((int) (point.x * 4), (int) (point.y * 4));
 
+		// write Rects
+
 		writer.write1Byte(map.rects.size);
 
-		// write Rects
+		// write Polys
 
 		writer.write1Byte(map.polygons.size);
 
-		// write Polys
+		// write Timers
 
 		writer.write1Byte(map.timers.size);
 
@@ -60,6 +66,13 @@ public class MapCompiler {
 			writer.write3Bytes((int) (timer.interval * 1000f));
 			writer.write1Byte(timer.steps);
 		}
+
+		// write Events / Commands
+
+		writer.write1Byte(map.events.size);
+
+		for (Event event : map.events)
+			writer.write1Byte(event.type);
 
 		writer.close();
 		long compileTime = System.currentTimeMillis() - startTime;
