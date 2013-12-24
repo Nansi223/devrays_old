@@ -30,7 +30,7 @@ public class Function {
 				case 3: // String
 					argBuilder.add("");
 				break;
-				case 4: // EditorPoint
+				case 4: // Point
 					argBuilder.add(null);
 				break;
 				case 5: // Rect

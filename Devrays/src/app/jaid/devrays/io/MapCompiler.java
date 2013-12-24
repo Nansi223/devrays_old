@@ -9,6 +9,7 @@ import app.jaid.devrays.Devrays;
 import app.jaid.devrays.Meta;
 import app.jaid.devrays.screen.editor.data.Command;
 import app.jaid.devrays.screen.editor.data.Event;
+import app.jaid.devrays.screen.open.MapThumbnailDrawer;
 import app.jaid.devrays.world.Map;
 import app.jaid.devrays.world.Tile;
 import app.jaid.devrays.world.logic.Timer;
@@ -95,7 +96,9 @@ public class MapCompiler {
 		html.append(".s{color:#666;font-size:10px}.h{background-color:#999;color:#FFF;padding:5px}.t{width:500px}");
 		html.append("</style></head><body><table style='margin:0'><tr><td style='vertical-align:top'>");
 
-		// html.append("<img src='data:image/png;base64," + MapThumbnailDrawer.base64(map, 512, 256) + ">");
+		// Wieso sind die PNGs kaputt?
+		MapThumbnailDrawer.base64(map, 512, 256);
+		// html.append("<img src='data:image/png;base64," + + ">");
 
 		html.append("<table border='1px solid' class='t'><tr><td class='h' colspan='2'>Map Compilation Report</td></tr>");
 
@@ -143,7 +146,9 @@ public class MapCompiler {
 			{
 				Tile tile = map.tilemap.tiles[x][map.tilemap.getHeight() - 1 - y];
 				html.append("<td class='" + (tile.type == 0 ? "e" : "b") + "'>" + tile.type + "</td>");
-				if (!tile.isSolid() && (x == 0 || x == map.tilemap.getWidth() - 1 || y == 0 || y == map.tilemap.getHeight() - 1)) // Prüfen ob man aus der Map fliegen könnte
+
+				// Prüfen ob man aus der Map fliegen könnte
+				if (!tile.isSolid() && (x == 0 || x == map.tilemap.getWidth() - 1 || y == 0 || y == map.tilemap.getHeight() - 1))
 					warnings.add("Block at <" + x + ", " + (map.tilemap.getHeight() - 1 - y) + "> is on edge but not solid.");
 			}
 			html.append("</tr>");

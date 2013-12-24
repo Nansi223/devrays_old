@@ -120,9 +120,6 @@ public class MenuScreen implements Screen {
 				}
 			});
 		}
-
-		ui.add(new NumericInput(15, 3, 7777, 0)).row();
-		ui.add(new NumericInput(8.88f, 2, 655.35f, 2)).row();
 	}
 
 	private void buttonClick(int button)

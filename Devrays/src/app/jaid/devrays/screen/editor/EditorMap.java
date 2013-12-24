@@ -6,6 +6,7 @@ import app.jaid.Jtil;
 import app.jaid.Point;
 import app.jaid.devrays.Atlas;
 import app.jaid.devrays.Devrays;
+import app.jaid.devrays.debug.Log;
 import app.jaid.devrays.io.MapCompiler;
 import app.jaid.devrays.screen.editor.data.EnemyProfile;
 import app.jaid.devrays.screen.editor.data.Event;
