@@ -69,7 +69,7 @@ public class CodePacker {
 		addCommand("forbidAction", newParameter(PARAM_BYTE, "ActionID"));
 		addCommand("allowAction", newParameter(PARAM_BYTE, "ActionID"));
 		addCommand("addEnvironmentEffect", newParameter(PARAM_BYTE, "EnvironmentEffectID"));
-		addCommand("removeEnvironmentEffect", newParameter(PARAM_BYTE, "EnvironmeSntEffectID"));
+		addCommand("removeEnvironmentEffect", newParameter(PARAM_BYTE, "EnvironmentEffectID"));
 
 		addEnemyPreset("Eye", 0, 30, Colors.WHITE);
 		addEnemyPreset("Power Eye", 0, 100, Colors.RED);

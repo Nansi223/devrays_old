@@ -223,6 +223,13 @@ public class MapCompiler {
 		return null;
 	}
 
+	public static void writeArgument(JaidWriter writer, Object argument, int ParameterType)
+	{
+
+		if (argument == null)
+			throw new IllegalArgumentException("Argument null can't be serialized.");
+	}
+
 	private static String validateArgument(Map map, Object argument)
 	{
 		if (argument == null)
