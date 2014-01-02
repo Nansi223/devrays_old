@@ -20,4 +20,16 @@ public class Map {
 	public Array<Timer>			timers;
 	public String				title;
 	public int					type;
+
+	public Map()
+	{
+		tilemap = new Tilemap();
+		points = new Array<Point>(Point.class);
+		rects = new Array<Point[]>(Point[].class);
+		polygons = new Array<Array<Point>>();
+		events = new Array<Event>(Event.class);
+		enemyProfiles = new Array<EnemyProfile>(EnemyProfile.class);
+		swarms = new Array<Swarm>(Swarm.class);
+		timers = new Array<Timer>(Timer.class);
+	}
 }

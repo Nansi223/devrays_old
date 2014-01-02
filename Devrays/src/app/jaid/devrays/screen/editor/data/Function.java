@@ -9,8 +9,17 @@ import com.badlogic.gdx.utils.Array;
 
 public class Function {
 
-	public Object[]	args;
-	public int		type;
+	public static final int	PARAMETERTYPE_BLOCK		= 7;
+	public static final int	PARAMETERTYPE_BYTE		= 0;
+	public static final int	PARAMETERTYPE_COLOR		= 8;
+	public static final int	PARAMETERTYPE_POINT		= 4;
+	public static final int	PARAMETERTYPE_POLYGON	= 6;
+	public static final int	PARAMETERTYPE_RECT		= 5;
+	public static final int	PARAMETERTYPE_SFLOAT	= 2;
+	public static final int	PARAMETERTYPE_SHORT		= 1;
+	public static final int	PARAMETERTYPE_STRING	= 3;
+	public Object[]			args;
+	public int				type;
 
 	public Function(int type)
 	{
@@ -20,29 +29,29 @@ public class Function {
 		for (Parameter param : this instanceof Event ? Meta.sdk.events[type].parameters : Meta.sdk.commands[type].parameters)
 			switch (param.type)
 			{
-				case 0: // Byte (0-255)
-				case 1: // Short (0-65535)
+				case PARAMETERTYPE_BYTE:
+				case PARAMETERTYPE_SHORT:
 					argBuilder.add(new Integer((byte) 0));
 				break;
-				case 2: // sFloat (0.00-655.35)
+				case PARAMETERTYPE_SFLOAT:
 					argBuilder.add(new Float(0f));
 				break;
-				case 3: // String
+				case PARAMETERTYPE_STRING:
 					argBuilder.add("");
 				break;
-				case 4: // Point
+				case PARAMETERTYPE_POINT:
 					argBuilder.add(null);
 				break;
-				case 5: // Rect
+				case PARAMETERTYPE_RECT:
 					argBuilder.add(null);
 				break;
-				case 6: // Polygon
+				case PARAMETERTYPE_POLYGON:
 					argBuilder.add(null);
 				break;
-				case 7: // Block (<0-255, 0-255>)
+				case PARAMETERTYPE_BLOCK:
 					argBuilder.add(new Block());
 				break;
-				case 8: // Color
+				case PARAMETERTYPE_COLOR:
 					argBuilder.add(null);
 				break;
 			}

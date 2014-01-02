@@ -32,41 +32,20 @@ public class EditorMap extends Map {
 
 	public EditorMap()
 	{
-		tilemap = new Tilemap();
-		points = new Array<Point>(Point.class);
-		rects = new Array<Point[]>(Point[].class);
-		polygons = new Array<Array<Point>>();
-		events = new Array<Event>(Event.class);
-		enemyProfiles = new Array<EnemyProfile>(EnemyProfile.class);
-		swarms = new Array<Swarm>(Swarm.class);
-		timers = new Array<Timer>(Timer.class);
+		super();
 	}
 
 	public void compile()
 	{
 		title = Toolbar.nameInput.getText();
-		Object result = MapCompiler.compile(this, LogicUi.getPseudoCode());
+		String result = MapCompiler.compile(this);
 
-		Table popup = new Table(Devrays.skin);
-
-		if (result instanceof String[])
+		if (result != null)
 		{
-			String[] resultLog = (String[]) result;
-			Table stats = new Table(Devrays.skin);
-			for (String stat : resultLog[0].split("<tr>"))
-			{
-				for (String value : stat.split("<td>"))
-					stats.add(value);
-				stats.row();
-			}
-
-			popup.add(stats);
-			popup.add(resultLog[1]);
+			Table popup = new Table(Devrays.skin);
+			popup.add(result);
+			Cards.add("Compilation Report", popup, true, 0);
 		}
-		else
-			popup.add("Could not compile:\n" + (String) result);
-
-		Cards.add("Compilation Report", popup, true, 0);
 	}
 
 	public void fill(int x, int y, byte type)
@@ -109,7 +88,7 @@ public class EditorMap extends Map {
 
 		tilemap.render(camera);
 
-		{ // Darken Animation (Fade), Enlight Animation (Shrink Dark Area)
+		{ // Darken / Enlight Animation
 			if (tool == TOOL_ENVIRONMENT)
 				tileDarkness = Jtil.moveTo(tileDarkness, Devrays.delta, 0.8f);
 			else
