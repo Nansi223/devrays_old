@@ -32,7 +32,9 @@ public class MapCompilationReport {
 		html.append("td{color:white;width:20px;height:20px;text-align:center;vertical-align:middle}.b{min-width:20px;background-color:#666;color:#FFF;font-size:10px}");
 		html.append(".e{min-width:20px;background-color:#000;color:#FFF;font-size:10px}.p{color:#666;padding:5px}");
 		html.append(".s{color:#666;font-size:10px}.h{background-color:#999;color:#FFF;padding:5px}.t{width:500px}");
-		html.append("</style></head><body><table style='margin:0'><tr><td style='vertical-align:top'>");
+		html.append("</style></head>");
+
+		html.append("<body style='background-color:gray'><div align='center'><div style='box-shadow:0 0 10px #000;display:inline-block;padding:20px;background-color:white'><table style='margin:0'><tr><td style='vertical-align:top'>");
 
 		// Wieso sind die PNGs kaputt?
 		MapThumbnailDrawer.base64(map, 512, 256);
@@ -73,7 +75,9 @@ public class MapCompilationReport {
 		// Pseudo Code Table
 		html.append("<table class='t' border='1px solid'><tr><td class='h'>Pseudo Code</td></tr><tr><td class='p' style='white-space:pre;text-align:left'>" + LogicUi.getPseudoCode().replace("\n", "<br>") + "</td></tr></table>");
 
-		html.append("</td><table border='1x solid'>");
+		// Map View
+
+		html.append("</td></tr><tr><td colspan='2'><div style='max-height:720px;max-width:1013px;overflow:auto'><table border='1x solid'>");
 
 		for (int y = 0; y != map.tilemap.getHeight(); y++)
 		{
@@ -84,8 +88,8 @@ public class MapCompilationReport {
 				html.append("<td class='" + (tile.type == 0 ? "e" : "b") + "'>" + tile.type + "</td>");
 
 				// Prüfen ob man aus der Map fliegen könnte
-				if (!tile.isSolid() && (x == 0 || x == map.tilemap.getWidth() - 1 || y == 0 || y == map.tilemap.getHeight() - 1))
-					warnings.add("Block at <" + x + ", " + (map.tilemap.getHeight() - 1 - y) + "> is on edge but not solid.");
+				// if (!tile.isSolid() && (x == 0 || x == map.tilemap.getWidth() - 1 || y == 0 || y == map.tilemap.getHeight() - 1))
+				// warnings.add("Block at <" + x + ", " + (map.tilemap.getHeight() - 1 - y) + "> is on edge but not solid.");
 			}
 			html.append("</tr>");
 		}
@@ -93,14 +97,17 @@ public class MapCompilationReport {
 		html.append("<tr><td></td>");
 		for (int x = 0; x != map.tilemap.getWidth(); x++)
 			html.append("<td class='s'>" + x + "</td>");
-		html.append("</tr></table>");
+		html.append("</tr></table></div>");
 
-		html.append("</body></html>");
+		html.append("</div></body></html>");
 
 		StringBuilder warningsTable = new StringBuilder("<table class='t' border='1px solid'><tr><td class='h'>Warnings</td></tr>");
 
-		for (String warning : warnings)
-			warningsTable.append("<tr><td class='p'>" + warning + "</td></tr>");
+		if (warnings.size == 0)
+			warningsTable.append("<tr><td class='p'>Everything's fine!</td></tr>");
+		else
+			for (String warning : warnings)
+				warningsTable.append("<tr><td class='p'>" + warning + "</td></tr>");
 
 		warningsTable.append("</table>");
 
