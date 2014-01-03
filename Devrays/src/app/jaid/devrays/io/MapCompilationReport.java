@@ -89,7 +89,7 @@ public class MapCompilationReport {
 		// Rechte Seite im Report:
 
 		// Pseudo Code Table
-		html.append("<table class='t' border='1px solid'><tr><td class='h'>Pseudo Code</td></tr><tr><td class='p' style='white-space:pre;text-align:left'>" + LogicUi.getPseudoCode().replace("\n", "<br>") + "</td></tr></table>");
+		html.append("<table class='t' border='1px solid'><tr><td class='h'>Pseudo Code</td></tr><tr><td class='p' style='max-width:500px;overflow:overlay;white-space:pre;text-align:left'>" + LogicUi.getPseudoCode().replace("\n", "<br>") + "</td></tr></table>");
 
 		// Map View
 
