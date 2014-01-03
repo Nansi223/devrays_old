@@ -1,5 +1,6 @@
 package app.jaid;
 
+import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Arrays;
@@ -65,6 +66,12 @@ public class Jtil {
 		}
 
 		return String.valueOf(object);
+	}
+
+	public static boolean isPrintableChar(char c)
+	{
+		Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
+		return !Character.isISOControl(c) && block != null && block != Character.UnicodeBlock.SPECIALS;
 	}
 
 	public static float moveTo(float value, float change, float origin)

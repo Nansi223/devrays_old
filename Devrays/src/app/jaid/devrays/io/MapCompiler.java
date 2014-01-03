@@ -81,7 +81,18 @@ public class MapCompiler {
 			// Write Arguments of current Event
 			for (int i = 0; i != event.args.length; i++)
 				writeArgument(map, writer, event.args[i], Meta.sdk.events[event.type].parameters[i].type);
+
+			writer.write1Byte(event.commands.size);
+
+			for (Command command : event.commands)
+			{
+				writer.write1Byte(command.type);
+				for (int i = 0; i != command.args.length; i++)
+					writeArgument(map, writer, command.args[i], Meta.sdk.commands[command.type].parameters[i].type);
+			}
 		}
+
+		writer.writeString(".JAID");
 
 		writer.close();
 		long compileTime = System.currentTimeMillis() - startTime;
@@ -161,6 +172,7 @@ public class MapCompiler {
 				writer.writeString((String) argument);
 			break;
 			case PARAMETERTYPE_POINT:
+				writer.writeString("POINT");
 				writer.write1Byte(map.points.indexOf((Point) argument, false));
 			break;
 			case PARAMETERTYPE_RECT:

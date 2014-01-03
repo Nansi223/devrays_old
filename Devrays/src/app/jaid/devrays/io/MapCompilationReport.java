@@ -1,12 +1,16 @@
 package app.jaid.devrays.io;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.zip.InflaterInputStream;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
 
+import app.jaid.Jtil;
+import app.jaid.devrays.debug.Log;
 import app.jaid.devrays.screen.editor.ui.LogicUi;
 import app.jaid.devrays.screen.open.MapThumbnailDrawer;
 import app.jaid.devrays.world.Map;
@@ -26,12 +30,24 @@ public class MapCompilationReport {
 		// e (Empty Block) - Block Type 0
 		// m (Mutable Block) - Block, der während des Spielens zu Block Type 0 werden könnte
 		// b (Static Block) - Block, der niemals durchgangen werden kann
+		// f1 / f2 (File Content Table TR)
+		// htr (Hexadecimal table row)
+		// atr (ASCII table row)
+		// n (invisble character in ASCII table cell)
+		// i (File content Byte Index Cell)
 
 		StringBuilder html = new StringBuilder();
-		html.append("<html><head><style type='text/css'>body{font-family:\"Lucida Console\",\"Lucida Sans Typewriter\"}table{margin-bottom:10px;border-color:#555;border-collapse:collapse}");
-		html.append("td{color:white;width:20px;height:20px;text-align:center;vertical-align:middle}.b{min-width:20px;background-color:#666;color:#FFF;font-size:10px}");
+		html.append("<html><head><style type='text/css'>body{font-family:\"Lucida Console\",\"Lucida Sans Typewriter\"}");
+		html.append("table{margin-top:10px;border-color:#555;border-collapse:collapse}");
+		html.append("td{min-width:20px;height:20px;text-align:center;vertical-align:middle}.b{min-width:20px;background-color:#666;color:#FFF;font-size:10px}");
 		html.append(".e{min-width:20px;background-color:#000;color:#FFF;font-size:10px}.p{color:#666;padding:5px}");
 		html.append(".s{color:#666;font-size:10px}.h{background-color:#999;color:#FFF;padding:5px}.t{width:500px}");
+		html.append(".f1{background-color:#DDD;color:#000;font-size:10px}");
+		html.append(".f2{background-color:#FFF;color:#000;font-size:10px}");
+		html.append("#htr td {min-width:17px}");
+		html.append("#atr td {min-width:11px}");
+		html.append(".n{background: linear-gradient(to bottom, #999 0%,#777 100%)}");
+		html.append(".i{color:#666}");
 		html.append("</style></head>");
 
 		html.append("<body style='background-color:gray'><div align='center'><div style='box-shadow:0 0 10px #000;display:inline-block;padding:20px;background-color:white'><table style='margin:0'><tr><td style='vertical-align:top'>");
@@ -44,21 +60,21 @@ public class MapCompilationReport {
 
 		// noformat
 		String[] properties = new String[] {
-				"Title", 		map.title,
-				"Filename", 	new StringBuilder(file.path()).insert(file.path().lastIndexOf("/") + 1, "<br>").toString(),
-				"Date",			new SimpleDateFormat("dd.MM.yyyy HH:mm").format(new Date()),
-				"Width", 		String.valueOf(map.tilemap.getWidth()),
-				"Height", 		String.valueOf(map.tilemap.getHeight()),
-				"Blocks", 		String.valueOf(map.tilemap.getWidth() * map.tilemap.getHeight()),
-				"Points", 		String.valueOf(map.points.size),
-				"Filesize", 	new DecimalFormat("#,###,###").format(file.file().length()) + " Byte",
-				"Needed Time",	compileTime + " ms"
+				"Title", 			map.title,
+				"Filename", 		new StringBuilder(file.path()).insert(file.path().lastIndexOf("/") + 1, "<br>").toString(),
+				"Date",				new SimpleDateFormat("dd.MM.yyyy HH:mm").format(new Date()),
+				"Width", 			String.valueOf(map.tilemap.getWidth()),
+				"Height", 			String.valueOf(map.tilemap.getHeight()),
+				"Blocks", 			String.valueOf(map.tilemap.getWidth() * map.tilemap.getHeight()),
+				"Points", 			String.valueOf(map.points.size),
+				"Inflated Size",	"<!--u--> Bytes",	
+				"Deflated Size",	new DecimalFormat("#,###,###").format(file.length()) + " Bytes <!--p-->",
+				"Needed Time",		compileTime + " ms"
 		};
 		// /noformat
 
 		for (int i = 0; i != properties.length; i += 2)
 			html.append("<tr><td class='p'>" + properties[i] + "</td><td class='p'>" + properties[i + 1] + "</td></tr>");
-		// report[0] += properties[i] + "<td>" + (properties[i + 1].contains("<br>") ? properties[i + 1].substring(properties[i + 1].indexOf("<br>") + 4) : properties[i + 1]) + "<tr>";
 
 		html.append("</table>");
 		html.append("<table class='t' border='1px solid'><tr><td class='h' colspan='4'>Points</td></tr><tr><td></td><td class='p'>x</td><td class='p'>y</td><td class='p'>Refs</td>");
@@ -77,7 +93,7 @@ public class MapCompilationReport {
 
 		// Map View
 
-		html.append("</td></tr><tr><td colspan='2'><div style='max-height:720px;max-width:1013px;overflow:auto'><table border='1x solid'>");
+		html.append("</td></tr><tr><td colspan='2'><div style='max-height:640px;max-width:1013px;overflow:auto'><table border='1x solid'>");
 
 		for (int y = 0; y != map.tilemap.getHeight(); y++)
 		{
@@ -99,7 +115,73 @@ public class MapCompilationReport {
 			html.append("<td class='s'>" + x + "</td>");
 		html.append("</tr></table></div>");
 
-		html.append("</div></body></html>");
+		// Build Decimal, Hexadecimal and ASCII Representation Table of File Contents
+
+		StringBuilder indexTable = new StringBuilder("<table border='1px solid' class='f'><tr><td class='h'>Byte</td></tr>");
+		StringBuilder decView = new StringBuilder("<table border='1px solid' class='f'><tr><td colspan='16' class='h'>Decimal View</td></tr>");
+		StringBuilder hexView = new StringBuilder("<table border='1px solid' class='f'><tr><td colspan='16' class='h'>Hexadecimal View</td></tr>");
+		StringBuilder asciiView = new StringBuilder("<table  border='1px solid' class='f'><tr><td colspan='16' class='h'>ASCII View</td></tr>");
+		InflaterInputStream stream = new InflaterInputStream(file.read());
+
+		int currentColumn = 15, columnCount = 0;
+		boolean evenRow = false;
+
+		try
+		{
+			while (stream.available() != 0)
+			{
+				int b = stream.read();
+				if (b > -1 && b < 256)
+				{
+
+					if (currentColumn++ == 15)
+					{
+						currentColumn = 0;
+						indexTable.append("</tr><tr><td class='i'>" + columnCount++ * 16 + "</td>");
+						decView.append("</tr><tr class='" + (evenRow ? "f1" : "f2") + "'>");
+						hexView.append("</tr><tr id='htr' class='" + (evenRow ? "f1" : "f2") + "'>");
+						asciiView.append("</tr><tr id='atr' class='" + (evenRow ? "f1" : "f2") + "'>");
+						evenRow = !evenRow;
+					}
+
+					decView.append("<td>" + b + "</td>");
+					hexView.append("<td>" + String.format("%02X", b) + "</td>");
+					asciiView.append(Jtil.isPrintableChar((char) (byte) b) ? "<td>" + String.valueOf((char) (byte) b) + "</td>" : "<td class='n'></td>");
+				}
+			}
+
+			// We can obtain the inflated file size now, so extend the property field <!--u-->
+			int inflatedSize = columnCount * 16 + currentColumn + 1; // +1 because we skipped the last byte (value -1) above
+			html.insert(html.indexOf("<!--u-->") + 8, new DecimalFormat("#,###,###").format(inflatedSize));
+			html.insert(html.indexOf("<!--p-->") + 8, "(" + (int) ((float) file.length() / inflatedSize * 100) + "%)");
+
+		} catch (IOException e)
+		{
+			app.jaid.devrays.debug.Log.e(e);
+		}
+
+		// Insert to html
+
+		indexTable.append("</table>");
+		decView.append("</table>");
+		hexView.append("</table>");
+		asciiView.append("</table>");
+
+		html.append("<div style='max-height:640px;overflow:auto;margin-top:10px'><table style='margin:0'><tr><td>");
+		html.append(indexTable);
+		html.append("</td><td>");
+		html.append(decView);
+		html.append("</td><td>");
+		html.append(hexView);
+		html.append("</td><td>");
+		html.append(asciiView);
+		html.append("</td></tr></table></div>");
+
+		// End html
+
+		html.append("</div></div></body></html>");
+
+		// Build warnings list based on warnings Array and insert after <!--w--> comment
 
 		StringBuilder warningsTable = new StringBuilder("<table class='t' border='1px solid'><tr><td class='h'>Warnings</td></tr>");
 
@@ -108,11 +190,9 @@ public class MapCompilationReport {
 		else
 			for (String warning : warnings)
 				warningsTable.append("<tr><td class='p'>" + warning + "</td></tr>");
-
 		warningsTable.append("</table>");
-
 		html.insert(html.indexOf("<!--w-->") + 8, warningsTable.toString());
+
 		return html.toString();
 	}
-
 }
