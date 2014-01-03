@@ -98,10 +98,9 @@ public class JaidWriter {
 
 	public void writeString(String string)
 	{
-		write2Bytes(string.getBytes().length);
-
 		try
 		{
+			write2Bytes(string.getBytes("UTF-8").length);
 			writeBytes(string.getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException e)
 		{
