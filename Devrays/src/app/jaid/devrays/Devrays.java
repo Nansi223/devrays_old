@@ -104,7 +104,7 @@ public class Devrays extends Game {
 	{
 		try
 		{
-			if (getScreen() instanceof LoadingScreen && LoadingScreen.done)
+			if (LoadingScreen.done)
 				start();
 
 			InputCore.update();
@@ -161,6 +161,7 @@ public class Devrays extends Game {
 
 	private void start()
 	{
+		LoadingScreen.done = false;
 		Atlas.add(assets.get("atlas/pack.atlas", TextureAtlas.class));
 		toastFont = assets.get("font/devrays.fnt");
 		skin = assets.get("skin/jaidskin.json", Skin.class);
