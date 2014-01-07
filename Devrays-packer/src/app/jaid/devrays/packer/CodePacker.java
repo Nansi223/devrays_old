@@ -62,7 +62,9 @@ public class CodePacker {
 		addCommand("displayTempText", newParameter(PARAM_SHORT, "LengthMs"), newParameter(PARAM_STRING, "Text"));
 		addCommand("displayText", newParameter(PARAM_BYTE, "LabelID"), newParameter(PARAM_STRING, "Text"));
 		addCommand("removeText", newParameter(PARAM_BYTE, "LabelID"));
-		addCommand("die");
+		addCommand("exitDeath");
+		addCommand("exitSuccess");
+		addCommand("vibrate", newParameter(PARAM_SHORT, "LengthMs"));
 		addCommand("displayTimer", newParameter(PARAM_BYTE, "TimerID"));
 		addCommand("hideTimer", newParameter(PARAM_BYTE, "Timer ID"));
 		addCommand("removeSwarm", newParameter(PARAM_BYTE, "SwarmID"));
