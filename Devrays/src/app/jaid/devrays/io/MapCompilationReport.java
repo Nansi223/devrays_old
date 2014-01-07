@@ -38,12 +38,13 @@ public class MapCompilationReport {
 		// eT / eB / eR / eL (Tile Edge Border Classes, Top / Bottom / Right / Left)
 
 		StringBuilder html = new StringBuilder();
-		html.append("<html><head><style type='text/css'>body{font-family:\"Lucida Console\",\"Lucida Sans Typewriter\"}");
+		html.append("<html><head><style type='text/css'>");
+		html.append("body{font-family:\"Lucida Console\",monospace}");
 		html.append("table{margin-top:10px;border-color:#555;border-collapse:collapse}");
 		html.append("td{min-width:20px;height:20px;text-align:center;vertical-align:middle}.b{min-width:20px;background-color:#666;color:#FFF;font-size:10px}");
 		html.append(".e{min-width:20px;background-color:#000;color:#FFF;font-size:10px}.p{color:#666;padding:5px}");
 		html.append(".s{color:#666;font-size:10px}.h{background-color:#999;color:#FFF;padding:5px}.t{width:500px}");
-		html.append(".f1{background-color:#DDD;color:#000;font-size:10px}");
+		html.append(".f1{background-color:#EEE;color:#000;font-size:10px}");
 		html.append(".f2{background-color:#FFF;color:#000;font-size:10px}");
 		html.append("#htr td {min-width:17px}");
 		html.append("#atr td {min-width:11px}");
