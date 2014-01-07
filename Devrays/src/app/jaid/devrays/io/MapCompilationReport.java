@@ -35,6 +35,7 @@ public class MapCompilationReport {
 		// atr (ASCII table row)
 		// n (invisble character in ASCII table cell)
 		// i (File content Byte Index Cell)
+		// eT / eB / eR / eL (Tile Edge Border Classes, Top / Bottom / Right / Left)
 
 		StringBuilder html = new StringBuilder();
 		html.append("<html><head><style type='text/css'>body{font-family:\"Lucida Console\",\"Lucida Sans Typewriter\"}");
@@ -48,6 +49,10 @@ public class MapCompilationReport {
 		html.append("#atr td {min-width:11px}");
 		html.append(".n{background: linear-gradient(to bottom, #999 0%,#777 100%)}");
 		html.append(".i{color:#666}");
+		html.append(".eT{border-top:1px solid white}");
+		html.append(".eB{border-bottom:1px solid white}");
+		html.append(".eL{border-left:1px solid white}");
+		html.append(".eR{border-right:1px solid white}");
 		html.append("</style></head>");
 
 		html.append("<body style='background-color:gray'><div align='center'><div style='box-shadow:0 0 10px #000;display:inline-block;padding:20px;background-color:white'><table style='margin:0'><tr><td style='vertical-align:top'>");
@@ -63,9 +68,8 @@ public class MapCompilationReport {
 				"Title", 			map.title,
 				"Filename", 		new StringBuilder(file.path()).insert(file.path().lastIndexOf("/") + 1, "<br>").toString(),
 				"Date",				new SimpleDateFormat("dd.MM.yyyy HH:mm").format(new Date()),
-				"Width", 			String.valueOf(map.tilemap.getWidth()),
-				"Height", 			String.valueOf(map.tilemap.getHeight()),
-				"Blocks", 			String.valueOf(map.tilemap.getWidth() * map.tilemap.getHeight()),
+				"Size", 			String.valueOf(map.tilemap.getWidth()) + " x " + String.valueOf(map.tilemap.getHeight()),
+				"Block Amount", 			String.valueOf(map.tilemap.getWidth() * map.tilemap.getHeight()),
 				"Points", 			String.valueOf(map.points.size),
 				"Inflated Size",	"<!--u--> Bytes",	
 				"Deflated Size",	new DecimalFormat("#,###,###").format(file.length()) + " Bytes <!--p-->",
@@ -101,7 +105,7 @@ public class MapCompilationReport {
 			for (int x = 0; x != map.tilemap.tiles.length; x++)
 			{
 				Tile tile = map.tilemap.tiles[x][map.tilemap.getHeight() - 1 - y];
-				html.append("<td class='" + (tile.type == 0 ? "e" : "b") + "'>" + tile.type + "</td>");
+				html.append("<td class='" + getTileCellClass(map, x, map.tilemap.getHeight() - 1 - y) + "'>" + tile.type + "</td>");
 
 				// Prüfen ob man aus der Map fliegen könnte
 				// if (!tile.isSolid() && (x == 0 || x == map.tilemap.getWidth() - 1 || y == 0 || y == map.tilemap.getHeight() - 1))
@@ -194,5 +198,25 @@ public class MapCompilationReport {
 		html.insert(html.indexOf("<!--w-->") + 8, warningsTable.toString());
 
 		return html.toString();
+	}
+
+	private static String getTileCellClass(Map map, int x, int y)
+	{
+		Tile tile = map.tilemap.getTile(x, y);
+		String classField = tile.type == 0 ? "e" : "b";
+
+		if (x != 0 && tile.type != map.tilemap.getTile(x - 1, y).type)
+			classField += " eL";
+
+		if (x != map.tilemap.getWidth() - 1 && tile.type != map.tilemap.getTile(x + 1, y).type)
+			classField += " eR";
+
+		if (y != 0 && tile.type != map.tilemap.getTile(x, y - 1).type)
+			classField += " eB";
+
+		if (y != map.tilemap.getHeight() - 1 && tile.type != map.tilemap.getTile(x, y + 1).type)
+			classField += " eT";
+
+		return classField;
 	}
 }
