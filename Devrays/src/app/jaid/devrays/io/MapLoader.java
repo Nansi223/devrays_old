@@ -12,7 +12,6 @@ public class MapLoader {
 	public static Map read(InputStream stream)
 	{
 		Map map = new Map();
-
 		JaidReader reader = new JaidReader(stream);
 
 		// Read meta information (type, title, size)
@@ -28,7 +27,6 @@ public class MapLoader {
 
 		Log.m("Loading " + devrType + " \"" + map.title + "\" (Type: " + map.type + ", Dimensions: " + width + "x" + height + ").");
 
-		map.tilemap = new Tilemap();
 		map.tilemap.tiles = new Tile[width][height];
 
 		// Read tiles

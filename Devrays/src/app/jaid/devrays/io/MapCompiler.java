@@ -36,8 +36,7 @@ public class MapCompiler {
 		JaidWriter writer = new JaidWriter(file.write(false), 9);
 
 		writer.writeString("DEVR.MAP");
-		writer.write1Byte(map.type); // MAP TYPE
-		writer.write1Byte(map.tilemap.getWidth(), map.tilemap.getHeight());
+		writer.write1Byte(map.type, map.tilemap.getWidth(), map.tilemap.getHeight());
 		writer.writeString(map.title);
 
 		// write Tiles
