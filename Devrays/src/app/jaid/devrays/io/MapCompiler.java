@@ -68,7 +68,6 @@ public class MapCompiler {
 		{
 			writer.write3Bytes((int) (timer.interval * 1000f));
 			writer.write1Byte(timer.steps);
-			writer.writeString("ßtimer");
 		}
 
 		// write Events / Commands

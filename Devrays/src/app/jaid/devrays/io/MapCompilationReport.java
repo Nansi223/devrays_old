@@ -89,12 +89,22 @@ public class MapCompilationReport {
 		// if (points[i].refs == 0)
 		// warnings.add("Point #" + i + " is unused.");
 
-		html.append("</table></td><td style='vertical-align:top;padding-left:10px'><!--w-->");
+		// Right Column of Statistics:
+		// Warnings Table
 
-		// Rechte Seite im Report:
+		html.append("</table></td><td style='vertical-align:top;padding-left:10px'><!--w-->");
 
 		// Pseudo Code Table
 		html.append("<table class='t' border='1px solid'><tr><td class='h'>Pseudo Code</td></tr><tr><td class='p' style='max-width:500px;overflow:overlay;white-space:pre;text-align:left'>" + LogicUi.getPseudoCode().replace("\n", "<br>") + "</td></tr></table>");
+
+		// Timers Table
+
+		html.append("<table class='t' border='1px solid'><tr><td class='h' colspan='4'>Timers</td></tr><tr><td></td><td class='p'>Interval</td><td class='p'>Steps</td><td class='p'>Onstart</td>");
+
+		for (int i = 0; i != map.timers.size; i++)
+			html.append("<tr><td class='p'>Timer #" + i + "</td><td class='p'>" + map.timers.get(i).interval + " ms</td><td class='p'>" + map.timers.get(i).steps + "</td><td class='p'>" + "" /* points[i].refs */+ "?</td></tr>");
+
+		html.append("</table>");
 
 		// Map View
 
