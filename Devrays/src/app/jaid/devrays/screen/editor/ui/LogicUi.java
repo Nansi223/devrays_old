@@ -5,6 +5,7 @@ import java.util.Comparator;
 
 import app.jaid.devrays.Devrays;
 import app.jaid.devrays.Meta;
+import app.jaid.devrays.debug.Log;
 import app.jaid.devrays.meta.code.CommandType;
 import app.jaid.devrays.meta.code.Parameter;
 import app.jaid.devrays.screen.editor.EditorScreen;
@@ -190,7 +191,7 @@ public class LogicUi {
 			@Override
 			public void changed(ChangeEvent event, Actor actor)
 			{
-				EditorScreen.map.timers.add(new Timer());
+				addTimer();
 				updateTimersCard();
 			}
 		});
@@ -238,6 +239,13 @@ public class LogicUi {
 	{
 		EditorScreen.map.events.add(new Event(type));
 		updateEventList();
+	}
+
+	private static void addTimer()
+	{
+		Timer timer = new Timer();
+		timer.interval = 1000;
+		EditorScreen.map.timers.add(timer);
 	}
 
 	private static Actor getArgWidget(byte type, final int index, final int commandIndex)
@@ -418,8 +426,14 @@ public class LogicUi {
 		codeToClipboardButton.setDisabled(codeLabel.getText().length() == 0); // Copy To Clipboard Button abhängig von der Tatsache, ob Code existiert, disablen oder enablen
 	}
 
+	private static void updateTimerInterval(int timerID, int interval)
+	{
+		EditorScreen.map.timers.get(timerID).interval = interval;
+	}
+
 	private static void updateTimersCard()
 	{
+		Log.m("updateTimersCard()");
 		timerList.clear();
 
 		timerList.add("ID");
@@ -429,8 +443,34 @@ public class LogicUi {
 		for (int i = 0; i != EditorScreen.map.timers.size; i++)
 		{
 			timerList.add("Timer #" + i);
-			timerList.add(new NumericInput(1000, 100, 600000, 0));
-			timerList.add(new NumericInput(0, 0, 255, 0)).row();
+			final int id = i;
+
+			NumericInput intervalInput = new NumericInput(EditorScreen.map.timers.get(i).interval, 100, 600000, 0);
+			intervalInput.setListener(new NumericInput.Listener() {
+
+				@Override
+				public void change(NumericInput input, int value, float floatValue)
+				{
+					updateTimerInterval(id, value);
+				}
+			});
+			timerList.add(intervalInput);
+
+			NumericInput stepsInput = new NumericInput(EditorScreen.map.timers.get(i).steps, 0, 255, 0);
+			stepsInput.setListener(new NumericInput.Listener() {
+
+				@Override
+				public void change(NumericInput input, int value, float floatValue)
+				{
+					updateTimerSteps(id, value);
+				}
+			});
+			timerList.add(stepsInput).row();
 		}
+	}
+
+	private static void updateTimerSteps(int timerID, int steps)
+	{
+		EditorScreen.map.timers.get(timerID).steps = steps;
 	}
 }
