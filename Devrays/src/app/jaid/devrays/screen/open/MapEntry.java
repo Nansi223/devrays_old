@@ -49,7 +49,7 @@ public class MapEntry extends Table {
 		add(thumbnailImage);
 
 		final Table mapDetails = new Table(Devrays.skin);
-		Label statsLabel = new Label("Filesize:\n" + Jtil.size(file.length()) + "\nModified:\n" + JTimeUtils.differenceToString(file.lastModified()) + "\nPoints:\n" + 0 + "\nRects:\n" + 0 + "\nPolygons:\n" + 0 + "\nEvents:\n" + 0 + "\nSwarms:\n" + 0, Devrays.skin);
+		Label statsLabel = new Label("Filesize:\n" + Jtil.size(file.length()) + "\nModified:\n" + JTimeUtils.differenceToString(file.lastModified()) + "\nPoints:\n" + map.points.size + "\nRects:\n" + map.rects.size + "\nPolygons:\n" + map.polygons.size + "\nEvents:\n" + map.events.size + "\nSwarms:\n" + map.swarms.size, Devrays.skin);
 		statsLabel.setColor(Color.LIGHT_GRAY);
 		statsLabel.setAlignment(Align.right);
 		mapDetails.add(statsLabel);
