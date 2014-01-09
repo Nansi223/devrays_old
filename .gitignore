@@ -1,9 +1,15 @@
 # IDE Directories #
 
 .settings/
+[Tt]mp/
+
+# Running Directories #
+
 [Gg]en/
 [Bb]in/
-[Tt]mp/
+*-html/.gwt/
+*-html/war
+*-html/gwt-unitCache
 
 # IDE Meta/Config Files #
 
