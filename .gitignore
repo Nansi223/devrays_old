@@ -7,9 +7,9 @@
 
 [Gg]en/
 [Bb]in/
-*-html/.gwt/
-*-html/war
-*-html/gwt-unitCache
+Devrays-html/.gwt/
+Devrays-html/war/
+Devrays-html/gwt-unitCache/
 
 # IDE Meta/Config Files #
 
