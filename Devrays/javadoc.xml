@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="javadoc">
-    <target name="javadoc">
-        <javadoc access="private" author="true" classpath="../Devrays-android/libs/gdx-backend-android-sources.jar;../Devrays-android/libs/gdx-backend-android.jar;libs/gdx.jar;bin;C:\Jaid ADT\lib\Kryonet\jars\production\onejar\kryonet-2.18-all.jar" destdir="doc" doctitle="Devrays" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="app.jaid.devrays,app.jaid.devrays.entity.bluetooth,app.jaid.devrays.multiplayer,app.jaid.devrays.mulitplayer,app.jaid.devrays.ui,app.jaid.devrays.debug,app.jaid.devrays.io,app.jaid.devrays.input,app.jaid.devrays.screen,app.jaid.devrays.world,app.jaid.devrays.entity" source="1.7" sourcepath="../Devrays-android/src;src;../Devrays-android/gen" splitindex="true" use="true" version="true"/>
-    </target>
-</project>
