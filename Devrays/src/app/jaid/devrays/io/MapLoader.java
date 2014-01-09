@@ -41,6 +41,7 @@ public class MapLoader {
 		int pointsCount = reader.read1Byte();
 		for (int i = 0; i != pointsCount; i++)
 			map.points.add(new Point(reader.read2Bytes() / 4f, reader.read2Bytes() / 4f));
+		Log.m(map.points.size);
 
 		// Read Rects
 

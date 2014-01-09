@@ -1,10 +1,11 @@
 package app.jaid.devrays.screen.editor;
 
+import app.jaid.Point;
 import app.jaid.devrays.debug.Log;
 import app.jaid.devrays.world.Tile;
 import app.jaid.devrays.world.Tilemap;
 
-public class StandartEditorMapLoader {
+public class NewMapLoader {
 
 	public static EditorMap get()
 	{
@@ -12,9 +13,6 @@ public class StandartEditorMapLoader {
 
 		map.title = "Enter Title";
 		map.type = 0;
-		Log.m("NEWWWWWWWWWWWWW");
-
-		Tilemap tilemap = map.tilemap;
 
 		byte[][] ids = new byte[][] {// <noformat>
 
@@ -53,11 +51,13 @@ public class StandartEditorMapLoader {
 
 		}; // </noformat>
 
-		tilemap.tiles = new Tile[ids[0].length][ids.length];
+		map.tilemap.tiles = new Tile[ids[0].length][ids.length];
 
-		for (int x = 0; x != tilemap.tiles.length; x++)
-			for (int y = 0; y != tilemap.tiles[0].length; y++)
-				tilemap.tiles[x][y] = new Tile(ids[y][x]);
+		for (int x = 0; x != map.tilemap.tiles.length; x++)
+			for (int y = 0; y != map.tilemap.tiles[0].length; y++)
+				map.tilemap.tiles[x][y] = new Tile(ids[y][x]);
+
+		map.points.add(new Point(3, 3));
 
 		return map;
 	}

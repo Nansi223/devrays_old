@@ -138,7 +138,7 @@ public class EditorScreen implements Screen {
 	public EditorScreen(Map openedMap)
 	{
 		if (openedMap == null)
-			map = StandartEditorMapLoader.get();
+			map = NewMapLoader.get();
 		else
 			map = EditorMapLoader.load(openedMap);
 	}
