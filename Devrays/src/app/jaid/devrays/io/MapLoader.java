@@ -2,6 +2,7 @@ package app.jaid.devrays.io;
 
 import java.io.InputStream;
 
+import app.jaid.Point;
 import app.jaid.devrays.debug.Log;
 import app.jaid.devrays.world.Map;
 import app.jaid.devrays.world.Tile;
@@ -35,7 +36,15 @@ public class MapLoader {
 			for (int y = 0; y != height; y++)
 				map.tilemap.tiles[x][y] = new Tile(reader.read1Byte());
 
-		// Read Event Data
+		// Read Points
+
+		int pointsCount = reader.read1Byte();
+		for (int i = 0; i != pointsCount; i++)
+			map.points.add(new Point(reader.read2Bytes() / 4f, reader.read2Bytes() / 4f));
+
+		// Read Rects
+
+		// Read Polys
 
 		return map;
 	}
