@@ -1,6 +1,6 @@
-devrays_old
+Devrays (old repo)
 ===========
 
-JavaLibGDX SHMUP Game - Available on Windows, Mac, Linux, Android and iOS
+Java/LibGDX SHMUP Game - Available on Windows, Mac, Linux, Android and iOS
 
 Replaced by [new Repository](https://github.com/Jaid/devrays).
